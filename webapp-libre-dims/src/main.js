@@ -1,5 +1,6 @@
 import { Map } from 'maplibre-gl';
 import naturalEarth from "./data/nd.geojson?url";
+import AreaIup from "./data/area.geojson?url";
 
 const mapElement = document.createElement('div');
 mapElement.id = 'map';
@@ -31,5 +32,23 @@ map.on ('load', () => {
       'circle-stroke-width': 2,
       'circle-stroke-color': '#FFFFFF'
     }
-  });
+  })
+
+ map.addSource('area', {
+    type: 'geojson',
+    data: AreaIup
+  })
+
+  map.addLayer({
+    id: "area-iup",
+    type: "fill",
+    source: "area",
+    paint: {
+      'fill-color': '#00FF00',
+      'fill-opacity': 0.5,
+      'fill-outline-color': '#000000'
+    }
+  })
 });
+
+
