@@ -1,6 +1,5 @@
 import { Map } from 'maplibre-gl';
-import { addKotaLayer, addPulauLayer } from './layer/vector';
-import { addSpongebobImage } from './layer/raster';
+import { addKotaLayer, addPulauLayer } from '../../layer/vector';
 
 const mapElement = document.createElement('div');
 mapElement.id = 'map';
@@ -10,13 +9,11 @@ document.body.appendChild(mapElement);
 const map = new Map({
   container: 'map',
   style: 'https://demotiles.maplibre.org/globe.json',
-  center: [106.83, -6.19],
+  center: [0, 0],
   zoom: 1
 });
 
 map.on("load", () => {
   addKotaLayer(map);
   addPulauLayer(map);
-  addSpongebobImage(map);
-
-})
+});
