@@ -1,6 +1,8 @@
 import { Map } from 'maplibre-gl';
+import 'maplibre-gl/dist/maplibre-gl.css';
 import { addKotaLayer, addPulauLayer } from './layer/vector';
 import { addSpongebobImage } from './layer/raster';
+import { addAttribution } from './controls/basicControl';
 
 const mapElement = document.createElement('div');
 mapElement.id = 'map';
@@ -11,7 +13,8 @@ const map = new Map({
   container: 'map',
   style: 'https://demotiles.maplibre.org/globe.json',
   center: [106.83, -6.19],
-  zoom: 1
+  zoom: 1,
+  attributionControl: false
 });
 
 map.on("load", () => {
@@ -19,4 +22,7 @@ map.on("load", () => {
   addPulauLayer(map);
   addSpongebobImage(map);
 
-})
+  });
+
+// Controls setting
+addAttribution(map, "Natural Earth, Nickelodeon");
