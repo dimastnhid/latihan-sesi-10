@@ -1,9 +1,16 @@
-import { Map, FullscreenControl, GlobeControl, LogoControl } from 'maplibre-gl';
+import { 
+  Map, 
+  FullscreenControl, 
+  GlobeControl, 
+  LogoControl,
+} from 'maplibre-gl';
+
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { addKotaLayer, addPulauLayer } from './layer/vector';
 import { addSpongebobImage } from './layer/raster';
-import { addAttribution } from './controls/basicControl';
+import { addAttribution } from './controls/basicControls';
 import { LogoHondaControl } from './controls/customLogoControls'
+import { addKotaPopup } from './popups/layerPopups';
 
 const mapElement = document.createElement('div');
 mapElement.id = 'map';
@@ -24,6 +31,11 @@ map.on("load", () => {
   addSpongebobImage(map);
 
   });
+
+  map.on("click", "titik-kota", function(event){
+  addKotaPopup(map, event);
+})
+
 
 // Controls setting
 addAttribution(map, "Natural Earth, Nickelodeon");
