@@ -11,11 +11,12 @@ document.body.appendChild(mapElement);
 
 const map = new Map({
   container: 'map',
-  style: 'https://demotiles.maplibre.org/globe.json',
-  center: [0, 0],
-  zoom: 1,
+    style: 'https://demotiles.maplibre.org/style.json',
+  center: [106.83, -6.19],
+  zoom: 5,
   attributionControl: false
 });
+
 
 map.on("load", () => {
   addKotaLayer(map);
